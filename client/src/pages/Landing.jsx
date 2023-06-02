@@ -1,20 +1,11 @@
 import main from '../assets/images/main.svg';
-import Wrapper from '../assets/wrappers/LandingPage';
-// import  Logo  from '../components/Logo';
-import { Link } from 'react-router-dom';
-// import { Navigate } from 'react-router-dom';
-// import { useAppContext } from '../context/appContext';
-import React from 'react';
+import React from 'react'
 
-const Landing = () => {
-  // const { user } = useAppContext();
+function Landing() {
+  
   return (
+
     <React.Fragment>
-      {/* {user && <Navigate to='/' />} */}
-      <Wrapper>
-        {/* <nav>
-          <Logo />
-        </nav> */}
         <div className='container page'>
           {/* info */}
           <div className='info'>
@@ -27,15 +18,14 @@ const Landing = () => {
               quinoa lo-fi tote bag adaptogen everyday carry meggings +1 brunch
               narwhal.
             </p>
-            <Link to='/register' className='btn btn-hero'>
+            <button className='btn btn-hero'>
               Login/Register
-            </Link>
+            </button>
           </div>
           <img src={main} alt='job hunt' className='img main-img' />
         </div>
-      </Wrapper>
     </React.Fragment>
-  );
-};
+  )
+}
 
-export default Landing;
+export default Landing
