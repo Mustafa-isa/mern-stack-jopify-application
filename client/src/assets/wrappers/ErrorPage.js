@@ -10,6 +10,7 @@ const Wrapper = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   h3 {
     margin-bottom: 0.5rem;
   }

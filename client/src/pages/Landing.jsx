@@ -1,11 +1,16 @@
 import main from '../assets/images/main.svg';
 import React from 'react'
-
+import Wrapper from '../assets/wrappers/LandingPage';
+ import Logo from '../components/Logo';
 function Landing() {
-  
+  console.log(Wrapper)
   return (
 
     <React.Fragment>
+      <Wrapper>
+        <nav>
+          <Logo />
+        </nav>
         <div className='container page'>
           {/* info */}
           <div className='info'>
@@ -24,6 +29,7 @@ function Landing() {
           </div>
           <img src={main} alt='job hunt' className='img main-img' />
         </div>
+        </Wrapper>
     </React.Fragment>
   )
 }
