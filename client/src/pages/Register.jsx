@@ -1,9 +1,12 @@
 import { useState } from "react";
-
+import {useAppContext} from "../context/AppContext"
 import Wrapper from "../assets/wrappers/RegisterPage";
 import Logo from "../components/Logo";
 import FormRow from "../components/FormRow";
+import Alert from "../components/Alert";
 function Register() {
+  const appApi =useAppContext()
+
   const inialState ={
     name:"",
     email:"",
@@ -14,9 +17,22 @@ function Register() {
   const [values,SetValues]=useState(inialState)
   const handleChange = (e) => {
     console.log(e.target);
+    SetValues({
+      ...values,
+      [e.target.name]:e.target.value
+
+    })
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+if(values.name==='' &&values.email==='' &&values.password===''){
+const dispatch= appApi.dispatch
+dispatch({
+  type:'SHOW_ALERT'
+})
+}else{
+  console.log('valid')
+}
   };
   const formSwitch =()=>{
     SetValues({
@@ -32,6 +48,13 @@ function Register() {
           fontWeight:500,
 fontSize:"30px"
         }}>Login</p>
+
+
+        {
+          appApi.state.show_alert &&(
+            <Alert/>
+          )
+        }
     {
       !values.isMember &&(
         <FormRow

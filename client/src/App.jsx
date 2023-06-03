@@ -1,9 +1,11 @@
 // import Landing from "./pages/Landing"
 import { BrowserRouter ,Routes,Route } from "react-router-dom"
 import {Landing ,DashBoard ,Register ,Error} from "./pages"
+import AppContext from "./context/AppContext"
 function App() {
   return (
     <div>
+<AppContext>
 <BrowserRouter>
 <Routes>
   <Route path="/landing" element={<Landing/>}/>
@@ -12,6 +14,7 @@ function App() {
   <Route path="/" element={<DashBoard/>}/>
 </Routes>
 </BrowserRouter>
+</AppContext>
     </div>
   )
 }

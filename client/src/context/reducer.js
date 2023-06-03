@@ -6,7 +6,7 @@ const reducer =(state,action)=>{
     return{
       ...state,
       show_alert:true,
-      alertType:'alert-dange',
+      alertType:'alert-danger',
       alertStatment:'please enter all values'
     }
   }
