@@ -1,0 +1,26 @@
+{
+  "name": "mern-stack-jopify-application",
+  "version": "1.0.0",
+  "description": "jopify application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mustafa-isa/mern-stack-jopify-application.git"
+  },
+  "author": "Mustafa Eisa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mustafa-isa/mern-stack-jopify-application/issues"
+  },
+  "homepage": "https://github.com/Mustafa-isa/mern-stack-jopify-application#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}

@@ -30,6 +30,12 @@ const dispatch= appApi.dispatch
 dispatch({
   type:'SHOW_ALERT'
 })
+
+setTimeout(()=>{
+  dispatch({
+    type:'CLEAR_ALERT'
+  })
+},3000)
 }else{
   console.log('valid')
 }
