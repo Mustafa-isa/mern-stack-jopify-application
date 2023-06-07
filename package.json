@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/Mustafa-isa/mern-stack-jopify-application#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "dotenv": "^16.1.4",
+    "express": "^4.18.2",
+    "mongoose": "^7.2.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
