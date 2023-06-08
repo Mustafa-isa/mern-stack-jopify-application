@@ -3,25 +3,25 @@ const dotenv = require("dotenv");
 const connect =require("./db/connect")
 const AuthRoute = require('./Router/AuthRoute')
 dotenv.config();
-const NotFound = require("./modalware/not-found");
-const ErrorHandler = require("./modalware/Error-handler");
+const NotFound = require("./middleware/not-found");
+const ErrorHandler = require("./middleware/Error-handler");
 const JopsRoutes = require("./Router/JopesRoute")
+const port = 6000;
+// middleware
 
-// modules
 
 const app = express();
 
-app.use("/", (req, res) => {
-
-  res.send("<h1>Mustafa Eisa Ibrehim</h1>");
-});
 app.use(express.json());
-app.use(NotFound);
-app.use(ErrorHandler);
-// auth routes
+
 app.use("/api/v1/auth" ,AuthRoute)
 app.use("/api/v1/jop" ,JopsRoutes)
-const port = 6000;
+app.use(NotFound);
+app.use(ErrorHandler);
+
+// auth routes
+
+
 
 
 // connect database and server
