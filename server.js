@@ -6,7 +6,7 @@ dotenv.config();
 const NotFound = require("./middleware/not-found");
 const ErrorHandler = require("./middleware/Error-handler");
 const JopsRoutes = require("./Router/JopesRoute")
-const port = 6000;
+const port = 1000;
 // middleware
 
 
