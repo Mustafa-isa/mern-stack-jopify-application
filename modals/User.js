@@ -11,10 +11,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-    validation: {
-      vaildate: validator.isEmail,
-      msg: "please provide valide email"
-    }
+    // validation: {
+    //   vaildate: validator.isEmail,
+    //   msg: "please provide valide email"
+    // }
   },
   password: {
     type: String,
@@ -24,13 +24,13 @@ const userSchema = new mongoose.Schema({
   },
   lastName: {
     type: String,
-    defalult: "last name",
+    default: "last name",
     minlength: 2,
     maxlength: 50
   },
   location: {
     type: String,
-    defalult: "my city",
+    default: "my city",
     minlength: 2,
     maxlength: 100
   }

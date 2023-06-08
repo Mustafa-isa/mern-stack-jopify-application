@@ -1,12 +1,12 @@
-const user = require("../modals/User");
+const User = require("../modals/User");
 
 const Register = async (req, res) => {
   try {
-    const userCreated = await user.create(req.body);
-    res.status(2001).json({ userCreated });
+    const userCreated = await User.create(req.body);
+    res.status(200).json( userCreated );
   } catch (err) {
     res.status(500).json({
-      msg: "error happened when create new user"
+    erorr: err
     });
   }
 };
