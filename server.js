@@ -5,15 +5,14 @@ const AuthRoute = require('./Router/AuthRoute')
 dotenv.config();
 const NotFound = require("./modalware/not-found");
 const ErrorHandler = require("./modalware/Error-handler");
-
-
+const JopsRoutes = require("./Router/JopesRoute")
 
 // modules
 
 const app = express();
 
 app.use("/", (req, res) => {
-  throw new Error("error");
+
   res.send("<h1>Mustafa Eisa Ibrehim</h1>");
 });
 app.use(express.json());
@@ -21,6 +20,7 @@ app.use(NotFound);
 app.use(ErrorHandler);
 // auth routes
 app.use("/api/v1/auth" ,AuthRoute)
+app.use("/api/v1/jop" ,JopsRoutes)
 const port = 6000;
 
 

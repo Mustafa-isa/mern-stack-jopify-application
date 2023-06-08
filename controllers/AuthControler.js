@@ -1,10 +1,10 @@
-const Register =(req,res) =>{
+const Register =async(req,res) =>{
   res.send("register")
 }
-const Login =(req,res) =>{
+const Login =async(req,res) =>{
   res.send("Login")
 }
-const Update =(req,res) =>{
+const Update =async(req,res) =>{
   res.send("Update")
 }
 module.exports ={Register ,Login ,Update}
