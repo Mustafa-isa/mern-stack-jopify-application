@@ -6,12 +6,14 @@ dotenv.config();
 const NotFound = require("./middleware/not-found");
 const ErrorHandler = require("./middleware/Error-handler");
 const JopsRoutes = require("./Router/JopesRoute")
+const cors = require('cors')
 const port = 1000;
 // middleware
 
 
 const app = express();
-
+// using cross orign  resourses sharing
+app.use(cors())
 app.use(express.json());
 
 app.use("/api/v1/auth" ,AuthRoute)
