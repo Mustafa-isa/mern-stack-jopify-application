@@ -5,7 +5,11 @@ const inialState ={
   IsLoading:false,
   show_alert:false,
       alertType:'',
-      alertStatment:''
+      alertStatment:'',
+      user:null,
+      token:null,
+      location:''
+      
 }
 function AppContext(props) {
   const [state,dispatch]=useReducer(reducer,inialState)

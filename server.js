@@ -2,12 +2,13 @@ const express = require("express");
 const dotenv = require("dotenv");
 const connect =require("./db/connect")
 const AuthRoute = require('./Router/AuthRoute')
-dotenv.config();
 const NotFound = require("./middleware/not-found");
 const ErrorHandler = require("./middleware/Error-handler");
 const JopsRoutes = require("./Router/JopesRoute")
 const cors = require('cors')
 const port = 1000;
+dotenv.config();
+
 // middleware
 
 

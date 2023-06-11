@@ -1,4 +1,4 @@
-import {SHOW_ALERT ,CLEAR_ALERT} from "./actions"
+import {SHOW_ALERT ,CLEAR_ALERT ,REGISTER_BEGIN ,REGISTER_ERROR ,REGISTER_SUCCESS} from "./actions"
 
 const reducer =(state,action)=>{
 
@@ -16,6 +16,22 @@ const reducer =(state,action)=>{
       show_alert:false,
       alertType:'',
       alertStatment:''
+    }
+  }
+  if(action.type === REGISTER_BEGIN ){
+    return{
+      ...state ,
+      IsLoadingL:true,
+      user:action.payload.user,
+      token:action.payload.token,
+      location:action.payload.location
+    }
+  }
+  if(action.type === REGISTER_SUCCESS ){
+    return{
+      ...state ,
+      IsLoadingL:false,
+  
     }
   }
 }
