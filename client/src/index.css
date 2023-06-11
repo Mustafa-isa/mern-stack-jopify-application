@@ -198,10 +198,14 @@ ul {
 .alert-danger {
   color: var(--red-dark);
   background: var(--red-light);
+  text-align: center;
+  padding: 10px;
 }
 .alert-success {
   color: var(--green-dark);
   background: var(--green-light);
+  text-align: center;
+  padding: 10px;
 }
 /* form */
 

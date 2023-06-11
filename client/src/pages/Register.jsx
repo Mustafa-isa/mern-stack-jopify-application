@@ -25,20 +25,23 @@ function Register() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    const dispatch= appApi.dispatch
 if(values.name==='' &&values.email==='' &&values.password===''){
-const dispatch= appApi.dispatch
+
 dispatch({
   type:'SHOW_ALERT'
 })
+
+}else{
+dispatch()
+}
 
 setTimeout(()=>{
   dispatch({
     type:'CLEAR_ALERT'
   })
 },3000)
-}else{
-  console.log('valid')
-}
+
   };
   const formSwitch =()=>{
     SetValues({

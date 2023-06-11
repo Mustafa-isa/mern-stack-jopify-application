@@ -22,15 +22,27 @@ const reducer =(state,action)=>{
     return{
       ...state ,
       IsLoadingL:true,
-      user:action.payload.user,
-      token:action.payload.token,
-      location:action.payload.location
+
     }
   }
   if(action.type === REGISTER_SUCCESS ){
     return{
       ...state ,
       IsLoadingL:false,
+      alertType:'alert-success',
+      alertStatment:'user has been registered ..',
+      user:action.payload.user,
+      token:action.payload.token,
+    
+  
+    }
+  }
+  if(action.type === REGISTER_ERROR ){
+    return{
+      ...state ,
+      IsLoadingL:false,
+      alertType:'alert-danger',
+      alertStatment:'ther is erro happen when register ..'
   
     }
   }

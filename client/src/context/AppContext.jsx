@@ -7,8 +7,7 @@ const inialState ={
       alertType:'',
       alertStatment:'',
       user:null,
-      token:null,
-      location:''
+      token:null
       
 }
 function AppContext(props) {
