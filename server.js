@@ -33,7 +33,7 @@ const startApp =async =>{
 
 try{
 connect(process.env.DB_STRING)
-app.listen(port, () => {
+app.listen(8000, () => {
   console.log(`our server is runing on port ${port}`);
 });
 }catch(err){

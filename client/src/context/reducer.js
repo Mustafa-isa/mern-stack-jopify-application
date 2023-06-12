@@ -33,6 +33,7 @@ const reducer =(state,action)=>{
       alertStatment:'user has been registered ..',
       user:action.payload.user,
       token:action.payload.token,
+      show_alert:true,
     
   
     }
@@ -42,8 +43,8 @@ const reducer =(state,action)=>{
       ...state ,
       IsLoadingL:false,
       alertType:'alert-danger',
-      alertStatment:'ther is erro happen when register ..'
-  
+      alertStatment:'ther is erro happen when register ..',
+      show_alert:true
     }
   }
 }
