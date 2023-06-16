@@ -5,11 +5,17 @@ import Logo from "../components/Logo";
 import FormRow from "../components/FormRow";
 import Alert from "../components/Alert";
 import axios from "axios";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 function Register() {
+  const savaUserAndTokenInLocalStorage =(user,token)=>{
+    localStorage.setItem("user",JSON.stringify(user))
+    localStorage.setItem("token",token)
+  }
+  const navigate = useNavigate();
+
   const appApi = useAppContext();
   const dispatch = appApi.dispatch;
-  console.log(appApi)
+  console.log(appApi);
 
   const inialState = {
     name: "",
@@ -18,27 +24,32 @@ function Register() {
     isMember: true,
     ShowAlert: true,
   };
+
   const registerFun = async (userInputs) => {
-    dispatch({type:"REGISTER_BEGIN"})
+    dispatch({ type: "REGISTER_BEGIN" });
     try {
       const response = await axios.post(
         "http://localhost:8000/api/v1/auth/register",
         userInputs
       );
-  // assuming the server returns the created user object
-    const {Token ,userCreated} =response.data
-    dispatch({
-      type:"REGISTER_SUCCESS",
-      payload:{
-        user:userCreated,
-        token:Token
-      }
-    })
+      // assuming the server returns the created user object
+      const { Token, userCreated } = response.data;
+      dispatch({
+        type: "REGISTER_SUCCESS",
+        payload: {
+          user: userCreated,
+          token: Token,
+        },
+      });
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+      savaUserAndTokenInLocalStorage(userCreated,Token)
     } catch (error) {
       console.error(error);
       dispatch({
-        type:"REGISTER_ERROR"
-      })
+        type: "REGISTER_ERROR",
+      });
     }
   };
   const [values, SetValues] = useState(inialState);
@@ -55,15 +66,15 @@ function Register() {
         type: "SHOW_ALERT",
       });
     } else {
-  const user = {
-    name:values.name,
-    email:values.email,
-    password:values.password,
-    lastName:"Eisa",
-    location:"qena"
-  }
+      const user = {
+        name: values.name,
+        email: values.email,
+        password: values.password,
+        lastName: "Eisa",
+        location: "qena",
+      };
 
-  registerFun(user)
+      registerFun(user);
     }
 
     setTimeout(() => {

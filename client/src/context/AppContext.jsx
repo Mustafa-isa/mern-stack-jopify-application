@@ -6,8 +6,8 @@ const inialState ={
   show_alert:false,
       alertType:'',
       alertStatment:'',
-      user:null,
-      token:null
+      user:JSON.parse(localStorage.getItem("user")) || null,
+      token:localStorage.getItem("token") ||null
       
 }
 function AppContext(props) {
