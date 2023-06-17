@@ -65,4 +65,9 @@ userSchema.methods.createJwt = function() {
   const token = jwt.sign(payload, secret, options);
   return token;
 };
+// userSchema.methods.comparePassowrd= async function(condanatePassword){
+// const comparedPassword =await bcrypt.compare(condanatePassword,this.password)
+// return comparedPassword
+
+// }
 module.exports = mongoose.model("User", userSchema);
