@@ -37,21 +37,21 @@ const userSchema = new mongoose.Schema({
     maxlength: 100
   }
 });
-userSchema.pre("save", async function(next) {
-  try {
-    // Generate a salt
-    const saltRounds = 10;
-    const salt = await bcrypt.genSalt(saltRounds);
+// userSchema.pre("save", async function(next) {
+//   try {
+//     // Generate a salt
+//     const saltRounds = 10;
+//     const salt = await bcrypt.genSalt(saltRounds);
 
-    // Hash the password with the salt
-    const hashedPassword = await bcrypt.hash(this.password, salt);
+//     // Hash the password with the salt
+//     const hashedPassword = await bcrypt.hash(this.password, salt);
 
-    // Replace the plaintext password with the hashed password
-    this.password = hashedPassword;
-  } catch (error) {
-    console.log(error);
-  }
-});
+//     // Replace the plaintext password with the hashed password
+//     this.password = hashedPassword;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 
 // create Jwt
 userSchema.methods.createJwt = function() {

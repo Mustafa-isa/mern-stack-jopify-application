@@ -15,7 +15,7 @@ function Register() {
 
   const appApi = useAppContext();
   const dispatch = appApi.dispatch;
-  console.log(appApi);
+
 
   const inialState = {
     name: "",
@@ -24,7 +24,37 @@ function Register() {
     isMember: true,
     ShowAlert: true,
   };
+const Login =async (user) =>{
+const email = user.email
+const password =user.password
+const userTryLogin ={
+email,
+password
+}
+dispatch({ type: "Login_BEGIN" });
+try {
+  const response = await axios.post(
+    "http://localhost:8000/api/v1/auth/login",
+    userTryLogin
+  );
+  // assuming the server returns the created user object
+  console.log(response)
+  dispatch({
+    type: "Login_SUCCESS",
+  
+  });
 
+  setTimeout(() => {
+    navigate("/");
+  }, 3000);
+
+} catch (error) {
+  console.error(error);
+  dispatch({
+    type: "Login_ERROR",
+  });
+}
+}
   const registerFun = async (userInputs) => {
     dispatch({ type: "REGISTER_BEGIN" });
     try {
@@ -41,10 +71,11 @@ function Register() {
           token: Token,
         },
       });
+      savaUserAndTokenInLocalStorage(userCreated,Token)
       setTimeout(() => {
         navigate("/");
       }, 3000);
-      savaUserAndTokenInLocalStorage(userCreated,Token)
+
     } catch (error) {
       console.error(error);
       dispatch({
@@ -74,7 +105,13 @@ function Register() {
         location: "qena",
       };
 
-      registerFun(user);
+      if(values.isMember){
+        Login(user)
+        
+      }
+      else{
+        registerFun(user);
+      }
     }
 
     setTimeout(() => {
