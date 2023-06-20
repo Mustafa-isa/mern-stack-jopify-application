@@ -66,8 +66,8 @@ const reducer = (state, action) => {
       IsLoadingL: false,
       alertType: "alert-success",
       alertStatment: "user has been Signed ..",
-      // user: action.payload.user,
-      // token: action.payload.token,
+      user: action.payload.user,
+      token: action.payload.token,
       show_alert: true
     };
   }
@@ -76,7 +76,7 @@ const reducer = (state, action) => {
       ...state,
       IsLoadingL: false,
       alertType: "alert-danger",
-      alertStatment: "ther is erro happen when register ..",
+      alertStatment: "Error Happned When Login In ..",
       show_alert: true
     };
   }

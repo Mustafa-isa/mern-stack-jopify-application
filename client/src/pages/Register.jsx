@@ -3,20 +3,21 @@ import { useAppContext } from "../context/AppContext";
 import Wrapper from "../assets/wrappers/RegisterPage";
 import Logo from "../components/Logo";
 import FormRow from "../components/FormRow";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import Alert from "../components/Alert";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 function Register() {
-  const savaUserAndTokenInLocalStorage =(user,token)=>{
-    localStorage.setItem("user",JSON.stringify(user))
-    localStorage.setItem("token",token)
-  }
+  const savaUserAndTokenInLocalStorage = (user, token) => {
+    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("token", token);
+  };
   const navigate = useNavigate();
 
   const appApi = useAppContext();
   const dispatch = appApi.dispatch;
-
-
+  const IsLoading = appApi.state.IsLoadingL;
   const inialState = {
     name: "",
     email: "",
@@ -24,37 +25,35 @@ function Register() {
     isMember: true,
     ShowAlert: true,
   };
-const Login =async (user) =>{
-const email = user.email
-const password =user.password
-const userTryLogin ={
-email,
-password
-}
-dispatch({ type: "Login_BEGIN" });
-try {
-  const response = await axios.post(
-    "http://localhost:8000/api/v1/auth/login",
-    userTryLogin
-  );
-  // assuming the server returns the created user object
-  console.log(response)
-  dispatch({
-    type: "Login_SUCCESS",
-  
-  });
+  const Login = async (user) => {
+    const email = user.email;
+    const password = user.password;
+    const userTryLogin = {
+      email,
+      password,
+    };
+    dispatch({ type: "Login_BEGIN" });
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/v1/auth/login",
+        userTryLogin
+      );
+      // assuming the server returns the created user object
+      console.log(response);
+      dispatch({
+        type: "Login_SUCCESS",
+      });
 
-  setTimeout(() => {
-    navigate("/");
-  }, 3000);
-
-} catch (error) {
-  console.error(error);
-  dispatch({
-    type: "Login_ERROR",
-  });
-}
-}
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+    } catch (error) {
+      console.error(error);
+      dispatch({
+        type: "Login_ERROR",
+      });
+    }
+  };
   const registerFun = async (userInputs) => {
     dispatch({ type: "REGISTER_BEGIN" });
     try {
@@ -71,11 +70,10 @@ try {
           token: Token,
         },
       });
-      savaUserAndTokenInLocalStorage(userCreated,Token)
+      savaUserAndTokenInLocalStorage(userCreated, Token);
       setTimeout(() => {
         navigate("/");
       }, 3000);
-
     } catch (error) {
       console.error(error);
       dispatch({
@@ -105,11 +103,9 @@ try {
         location: "qena",
       };
 
-      if(values.isMember){
-        Login(user)
-        
-      }
-      else{
+      if (values.isMember) {
+        Login(user);
+      } else {
         registerFun(user);
       }
     }
@@ -163,11 +159,22 @@ try {
           handleChange={handleChange}
           labelText="password"
         />
-        <button className="btn btn-block">submit</button>
+        <button className="btn btn-block">
+      {
+        IsLoading ?   <FontAwesomeIcon icon={faSpinner} spin /> : "Submit"
+      }
+          </button>
         <p>
           {values.isMember ? "Not a member yet ?" : "Already a member ?"}
           <button type="button" className="member-btn" onClick={formSwitch}>
-            {values.isMember ? "Register" : "Login"}
+            {IsLoading ? (
+              <FontAwesomeIcon icon={faSpinner} spin />
+            ) : values.isMember ? (
+              "Register"
+            ) : (
+              "Login"
+            )}
+            
           </button>
         </p>
       </form>
