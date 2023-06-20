@@ -25,14 +25,18 @@ const Login = async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email })
     const RightPassword = await bcrypt.compare(password, user.password);
-    if (!user ) {
+    const Token = await user.createJwt();
+
+
+    if (!user || RightPassword) {
       
       res.json({
         msg: "Incorrect email or password"
       });
     } else {
       res.json({
-        msg: "Login successful"
+      user,
+      Token
       });
     }
   } catch (err) {

@@ -39,7 +39,6 @@ function Register() {
         userTryLogin
       );
       // assuming the server returns the created user object
-      console.log(response);
       dispatch({
         type: "Login_SUCCESS",
       });
@@ -47,6 +46,9 @@ function Register() {
       setTimeout(() => {
         navigate("/");
       }, 3000);
+      const {user ,Token} = response.data
+      savaUserAndTokenInLocalStorage(user ,Token)
+      console.log({user ,Token})
     } catch (error) {
       console.error(error);
       dispatch({
