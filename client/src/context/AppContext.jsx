@@ -7,8 +7,8 @@ const inialState ={
       alertType:'',
       alertStatment:'',
       user:JSON.parse(localStorage.getItem("user")) || null,
-      token:localStorage.getItem("token") ||null
-      
+      token:localStorage.getItem("token") ||null,
+      show_sidebar :false
 }
 function AppContext(props) {
   const [state,dispatch]=useReducer(reducer,inialState)

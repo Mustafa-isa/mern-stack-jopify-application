@@ -6,7 +6,9 @@ import {
   REGISTER_SUCCESS,
   Login_BEGIN,
   Login_ERROR,
-  Login_SUCCESS
+  Login_SUCCESS,
+  SHOW_SIDE_BAR,
+  LOGOUT
 } from "./actions";
 
 const reducer = (state, action) => {
@@ -79,6 +81,26 @@ const reducer = (state, action) => {
       alertStatment: "Error Happned When Login In ..",
       show_alert: true
     };
+    
   }
+
+  if (action.type === SHOW_SIDE_BAR) {
+    return {
+      ...state,
+      show_sidebar:!state.show_sidebar
+    };
+}
+if (action.type === LOGOUT) {
+  return {
+    IsLoading:false,
+  show_alert:false,
+      alertType:'',
+      alertStatment:'',
+      user: null,
+      token:null,
+      show_sidebar :false
+  };
+}
+
 };
 export default reducer;
