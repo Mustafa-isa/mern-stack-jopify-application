@@ -6,12 +6,18 @@ import Logo from './Logo'
 import NavLinks from './NavLinks'
 
 const SmallSidebar = () => {
-  const { showSidebar, toggleSidebar } = useAppContext()
+const show_sidebar =useAppContext().state.show_sidebar
+const dispatch =useAppContext().dispatch
+const  toggleSidebar =()=>{
+  dispatch({
+    type:"SHOW_SIDE_BAR"
+  })
+}
   return (
     <Wrapper>
       <div
         className={
-          showSidebar ? 'sidebar-container show-sidebar' : 'sidebar-container'
+          show_sidebar ? 'sidebar-container show-sidebar' : 'sidebar-container'
         }
       >
         <div className='content'>
@@ -21,7 +27,8 @@ const SmallSidebar = () => {
           <header>
             <Logo />
           </header>
-          <NavLinks toggleSidebar={toggleSidebar} />
+          {/* <NavLinks toggleSidebar={toggleSidebar} /> */}
+          navlinks
         </div>
       </div>
     </Wrapper>
