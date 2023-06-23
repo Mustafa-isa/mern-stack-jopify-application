@@ -1,18 +1,18 @@
 const FormRow = ({ type, name, value, handleChange, labelText }) => {
-  return (
-    <div className='form-row'>
-      <label htmlFor={name} className='form-label'>
-        {labelText || name}
-      </label>
-      <input 
-        type={type}
+    return (
+        <div className={'form-row'}>
+            <label htmlFor={name} className={'form-label'}>
+                {labelText || name}
+            </label>
 
-        name={name}
-        onChange={handleChange}
-        className='form-input'
-      />
-    </div>
-  )
-}
+            <input className={'form-input'} id={name}
+                type={type}
+                name={name}
+                value={value}
+                onChange={handleChange}
+            />
+        </div>
+    );
+};
 
-export default FormRow
+export default FormRow;

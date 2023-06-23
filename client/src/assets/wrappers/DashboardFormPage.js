@@ -29,6 +29,9 @@ const Wrapper = styled.section`
     height: 35px;
     margin-top: 1rem;
   }
+  .form-center button:disabled {
+    cursor: not-allowed;
+  }
   .btn-container {
     display: grid;
     grid-template-columns: 1fr 1fr;

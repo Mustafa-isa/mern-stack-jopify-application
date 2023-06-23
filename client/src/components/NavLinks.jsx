@@ -5,34 +5,71 @@ import { MdQueryStats } from 'react-icons/md'
 import { FaWpforms } from 'react-icons/fa'
 import { ImProfile } from 'react-icons/im'
 
-const links = [
-  { id: 1, text: 'stats', path: '/', icon: <IoBarChartSharp/> },
-  { id: 2, text: 'all jobs', path: 'all-jobs', icon: <MdQueryStats/> },
-  { id: 3, text: 'add job', path: 'add-job', icon: <FaWpforms/> },
-  { id: 4, text: 'profile', path: 'profile', icon: <ImProfile/> },
-]
 
+const idies =[1,2,3,4]
 const NavLinks = ({ toggleSidebar }) => {
   return (
     <div className='nav-links'>
-      {links.map((link) => {
-        const { text, path, id, icon } = link;
-
-        return (
-          <NavLink
-            to={path}
-            key={id}
+        <NavLink
+            to='/'
+            key={idies[0]}
             onClick={toggleSidebar}
             className={({ isActive }) =>
               isActive ? 'nav-link active' : 'nav-link'
             }
             end
           >
-            <span className='icon'>{icon}</span>
-            {text}
+            <span className='icon'>
+            <IoBarChartSharp/>
+            </span>
+            stats
           </NavLink>
-        );
-      })}
+
+
+          <NavLink
+            to='All_jops'
+            key={idies[1]}
+            onClick={toggleSidebar}
+            className={({ isActive }) =>
+              isActive ? 'nav-link active' : 'nav-link'
+            }
+            end
+          >
+            <span className='icon'>
+            <MdQueryStats/>
+            </span>
+            all jobs
+          </NavLink>
+
+
+          <NavLink
+            to='Add_jop'
+            key={idies[2]}
+            onClick={toggleSidebar}
+            className={({ isActive }) =>
+              isActive ? 'nav-link active' : 'nav-link'
+            }
+            end
+          >
+            <span className='icon'><FaWpforms/></span>
+          add jop
+          </NavLink>
+
+
+          <NavLink
+            to='profile'
+            key={idies[3]}
+            onClick={toggleSidebar}
+            className={({ isActive }) =>
+              isActive ? 'nav-link active' : 'nav-link'
+            }
+            end
+          >
+            <span className='icon'><ImProfile/></span>
+            profile
+          </NavLink>
+
+    
     </div>
   );
 };

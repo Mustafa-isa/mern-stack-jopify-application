@@ -1,13 +1,13 @@
-import { useAppContext } from "../context/AppContext";
-import "../../src/index.css";
+import {useAppContext} from "../context/appContext.jsx";
 
 const Alert = () => {
-  const appApi = useAppContext();
-  return (
-    <div className={appApi.state.alertType.trim() }>
-      {appApi.state.alertStatment}
-    </div>
-  );
+    const {alertType, alertText} = useAppContext();
+    return (
+        <div className={`alert alert-${alertType}`}
+        >
+            {alertText}
+        </div>
+    )
 };
 
 export default Alert;

@@ -1,1 +1,1 @@
-# mern-stack-jopify-application
+# Jobify

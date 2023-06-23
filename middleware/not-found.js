@@ -1,4 +1,5 @@
-const NotFound =(req,res)=>{
-  res.status(404).send("route not found")
+const notFound = (req,res,next) => {
+    res.status(404).send('Not Found');
 }
-module.exports= NotFound
+
+export default notFound;
